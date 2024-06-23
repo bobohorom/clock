@@ -1,4 +1,4 @@
-const PREFIX = "V1"
+const PREFIX = "V2"
 const BASE = location.protocol + '//' + location.host;
 const assets = []
 
@@ -7,7 +7,7 @@ self.addEventListener("install", installEvent => {
     console.log(`${PREFIX} install`);
     installEvent.waitUntil((async () => {
         const cache = await caches.open(PREFIX);
-        await cache.addAll([...assets,"/offline.html"]);
+        await cache.addAll([...assets,"/clock/offline.html"]);
     })()
     );
     console.log(`${PREFIX} install`);    
@@ -42,7 +42,7 @@ self.addEventListener("fetch", (fetchEvent) => {
                 } catch(e){
                     console.log('offline mode detected');
                     const cache = await caches.open(PREFIX);
-                    return await caches.match('/offline.html');
+                    return await caches.match('/clock/offline.html');
                 }
             })())
     }
