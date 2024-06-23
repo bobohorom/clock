@@ -1,4 +1,4 @@
-const PREFIX = "V4"
+const PREFIX = "V5"
 const BASE = location.protocol + '//' + location.host;
 const assets = []
 
