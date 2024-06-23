@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Offline PWA CLock</title>
+    <style>
+    html, body, .container {
+        height: 100%;
+    }
+    p  {
+      font-family: verdana;
+      font-size: 300%;
+    }
+    body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: slategrey;
+    }
+    </style>
+
+</head>
+<body id="the_body">
+<main>
+    <div class="container"> 
+    <p><bold>
+    <span id="heure" class="container"></span>  
+    </p></bold>
+    </div>    
+</main>
+<script>
+const myTimeout = setTimeout(myGreeting, 1000);
+function myGreeting() {
+    const da = new Date();
+    let time = da.getTime();
+    const h = new Date(time);
+    document.getElementById("heure").innerHTML = h.getHours().toString().padStart(2,"0")+':'+h.getMinutes().toString().padStart(2,"0")+':'+h.getSeconds().toString().padStart(2,"0");
+    setTimeout(myGreeting, 1000);
+}
+</script>
+
+</body>
+</html>
