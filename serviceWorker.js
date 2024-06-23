@@ -47,6 +47,21 @@ self.addEventListener("fetch", (fetchEvent) => {
             })())
     }
     else {        
-        console.log('Fetch autre');
+        console.log('Fetch other');
+        fetchEvent.respondWith( (async () => {
+            try{
+                    const preloadResponse = await fetchEvent.preloadResponse;
+                    if (preloadResponse) {
+                        console.log("return preload", preloadResponse);
+                        return preloadResponse;
+                    }
+                    console.log("return other fetch");
+                    return await fetch(fetchEvent.request);
+                } catch(e){
+                    console.log('other offline mode detected');
+                    const cache = await caches.open(PREFIX);
+                    return await caches.match('/clock/offline.html');
+                }
+            })())
     }
 });
