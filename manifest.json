@@ -1,7 +1,7 @@
 {
   "name": "PWA my clock",
   "start_url": "/clock/?source=pwa",
-  "display": "standalone",
+  "display": "fullscreen",
   "theme_color": "#444444",
   "orientation": "portrait-primary",
   "icons": [
